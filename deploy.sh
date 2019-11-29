@@ -10,6 +10,6 @@ docker push szaszolak/multi-worker:$SHA
 
 kubectl apply -f k8s
 
-kubectl rolling-update client-deployment --image=szaszolak/multi-client:$SHA
-kubectl rolling-update server-deployment --image=szaszolak/multi-server:$SHA
-kubectl rolling-update worker-deployment --image=szaszolak/multi-worker:$SHA
+kubectl set image deployment/client-deployment client=szaszolak/multi-client:$SHA
+kubectl set image deployment/worker-deployment worker=szaszolak/multi-worker:$SHA
+kubectl set image deployment/server-deployment server=szaszolak/multi-server:$SHA
